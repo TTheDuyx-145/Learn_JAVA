@@ -22,34 +22,34 @@ public class JDBCExample {
         Scanner sc = new Scanner(System.in);
         Connection con = getConnection();
         if (con != null) {
-//            Statement stmt = con.createStatement();
+           Statement stmt = con.createStatement();
 //
 //            // Thêm bản ghi mới
-//            int row = stmt.executeUpdate(
-//                "INSERT INTO Customers (CustomerID, CustomerName, ContactName, Address, City, PostalCode, Country) " +
-//                "VALUES (9999,'Nguyen Van Nam','Nam','Hai Duong','Hai Duong',2003,'VN')"
-//            );
+           int row = stmt.executeUpdate(
+               "INSERT INTO Customers (CustomerID, CustomerName, ContactName, Address, City, PostalCode, Country) " +
+               "VALUES (9999,'Nguyen Van Nam','Nam','Hai Duong','Hai Duong',2003,'VN')"
+           );
 //            // Xoa ban ghi
-//            int row1 = stmt.executeUpdate("DELETE FROM Customers WHERE CustomerID = 9999");
-//            System.out.println("Rows inserted: " + row1);
+           int row1 = stmt.executeUpdate("DELETE FROM Customers WHERE CustomerID = 9999");
+           System.out.println("Rows inserted: " + row1);
 //
 //            // Truy vấn dữ liệu
-//            ResultSet rs = stmt.executeQuery("SELECT * FROM Customers");
-//            while (rs.next()) {
-//                System.out.println(
-//                    rs.getInt(1) + " " +
-//                    rs.getString(2) + " " +
-//                    rs.getString(3) + " " +
-//                    rs.getString(4) + " " +
-//                    rs.getString("City")
-//                );
-//            }
+           ResultSet rs = stmt.executeQuery("SELECT * FROM Customers");
+           while (rs.next()) {
+               System.out.println(
+                   rs.getInt(1) + " " +
+                   rs.getString(2) + " " +
+                   rs.getString(3) + " " +
+                   rs.getString(4) + " " +
+                   rs.getString("City")
+               );
+           }
             
             
             // Pro up: Co the truyen du lieu can vao hoac nhap tu ban phim
-//            PreparedStatement stmt1 = con.prepareStatement("SELECT * FROM Customers WHERE CustomerID >= ? AND Country = ?");
-//            stmt1.setInt(1, 50 );
-//            stmt1.setString(2,"USA");
+           PreparedStatement stmt1 = con.prepareStatement("SELECT * FROM Customers WHERE CustomerID >= ? AND Country = ?");
+           stmt1.setInt(1, 50 );
+           stmt1.setString(2,"USA");
             // Nhap tu ban phim:
             PreparedStatement stmt1 = con.prepareStatement("INSERT INTO Customers VALUES(?,?,?,?,?,?,?)");
             int n = Integer.parseInt(sc.nextLine());
